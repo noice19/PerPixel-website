@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noice Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="noice-design.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Noice</a>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main class="noice-design">
+        <h1>Noice Design Showcase</h1>
+        <div class="image-gallery">
+            <div class="image-container">
+
+                <img src="images/Design1.jpg" alt="Design 1" onclick="openModal(this)">
+                <div class="overlay">
+                    <h3>Design 1</h3>
+                    <p>Innovative and sleek design concept</p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/Design2.jpg" alt="Design 2" onclick="openModal(this)">
+                <div class="overlay">
+                    <h3>Design 2</h3>
+                    <p>Bold and vibrant color scheme</p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/Design3.jpg" alt="Design 1" onclick="openFullscreen(this)">
+                <div class="overlay">
+                    <h3>Design 1</h3>
+                    <p>Innovative and sleek design concept</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">×</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Noice Design. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+  <script>
+  function openFullscreen(img) {
+      const fullscreen = document.createElement('div');
+      fullscreen.classList.add('fullscreen');
+      fullscreen.innerHTML = `
+          <img src="${img.src}" alt="${img.alt}">
+          <button onclick="closeFullscreen(this)">Close</button>
+      `;
+      document.body.appendChild(fullscreen);
+      setTimeout(() => fullscreen.classList.add('active'), 50);
+  }
+
+  function closeFullscreen(button) {
+      const fullscreen = button.parentElement;
+      fullscreen.classList.remove('active');
+      setTimeout(() => fullscreen.remove(), 300);
+  }
+  </script>
